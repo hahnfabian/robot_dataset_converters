@@ -1,0 +1,4 @@
+h5py
+argparse
+tensorflow_datasets 
+numpy 
