@@ -1,3 +1,63 @@
+""""
+Port DROID (https://droid-dataset.github.io/) dataset to robomimic.
+
+1. DROID style:
+    /episode/
+        episode_metadata/
+            ...
+        steps/
+            is_first
+            is_last
+            is_terminal
+            language_instruction
+            language_instruction_2
+            language_instruction_3
+            observation/  --> current state
+                gripper_position (1,)
+                cartesian_position (6,)
+                joint_position (7,)
+                wrist_image_left (180, 320, 3)
+                exterior_image_1_left (180, 320, 3)
+                exterior_image_2_left (180, 320, 3)
+            action_dict/  --> commanded state
+                gripper_position (1,)
+                gripper_velocity (1,)
+                cartesian_position (6,)
+                cartesian_velocity (6,)
+                joint_position (7,)
+                joint_velocity (7,)
+            reward
+            action (7,) --> [6x joint velocities, 1x gripper position]
+
+
+2. Robomimic style:
+    /data/
+        demo_0/
+            num_samples --> number of state-action samples 
+            actions         (T, action_dim) --> [x, y, z, roll, pitch, yaw, gripper] 
+            obs/
+                agentview_image (T, H, W, C)
+                robot0_eef_pos  (T, 3) --> [x,y,z]
+                robot0_eef_quat
+                robot0_eef_vel_ang
+                robot0_eef_vel_lin
+                robot0_eye_in_hand_image
+                robot0_gripper_qpos
+                robot0_gripper_qvel
+                robot0_joint_pos
+                robot0_joint_pos_cos
+                robot0_joint_pos_sin
+                robot0_joint_vel
+            rewards         (T,)
+            dones           (T,)  --> is 1 corresponding action in the state should terminate the episode
+        demo_1/
+            ...
+    /mask/
+        train             episode indices for train split
+        valid             episode indices for valid split
+"""
+
+
 import h5py
 import argparse
 import tensorflow_datasets as tfds
@@ -5,7 +65,7 @@ import numpy as np
 import os
 import sys
 import json
-
+import tqdm
 
 env_args = {
     "env_name": "DROID_100",
@@ -147,7 +207,7 @@ def main(data_dir, output_path, num_episodes):
         episode_indices = []
         
         # TODO: only write after N eps
-        for episode in ds:
+        for episode in tqdm(ds):
             if num_episodes is not None and ep_idx >= num_episodes:
                 break
                 
