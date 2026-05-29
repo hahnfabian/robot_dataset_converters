@@ -65,7 +65,17 @@ import numpy as np
 import os
 import sys
 import json
-import tqdm
+from tqdm import tqdm
+import cv2
+
+
+CAMERA_HEIGHT = 230
+CAMERA_WIDTH = 180
+
+# TODO replace with the normalised a_min, a_max (gotten by the DataLoader?)
+CONTROLLER_OUTPUT_MAX = [1.0]*7
+CONTROLLER_OUTPUT_MIN = [-1.0]*7
+
 
 env_args = {
     "env_name": "DROID_100",
@@ -74,8 +84,8 @@ env_args = {
         "Panda"
     ],
     "camera_depths": False,
-    "camera_heights": 180,    
-    "camera_widths": 320,
+    "camera_heights": CAMERA_HEIGHT,    
+    "camera_widths": CAMERA_WIDTH,
     "reward_shaping": False,
     "camera_names": [
             "agentview",
@@ -91,7 +101,7 @@ env_args = {
             "type": "JOINT_VELOCITIES",
             "input_max": 1,
             "input_min": -1,
-            "output_max": [1.0]*7,
+            "output_max": CONTROLLER_OUTPUT_MAX,
             "output_min": [-1.0]*7,
             "kp": 150, # CHECK all the following -->
             "damping": 1,
@@ -115,80 +125,132 @@ env_args = {
     }
 }
 
+def resize_with_padding(img, size=256):
+    h, w = img.shape[:2]
+    
+    scale = size / max(h, w)
+    new_h, new_w = int(h * scale), int(w * scale)
+    
+    img_resized = cv2.resize(img, (new_w, new_h))
+    
+    canvas = np.zeros((size, size, 3), dtype=img.dtype)
+    
+    y_offset = (size - new_h) // 2
+    x_offset = (size - new_w) // 2
+    
+    canvas[y_offset:y_offset+new_h, x_offset:x_offset+new_w] = img_resized
+    
+    return canvas
 
 
 def convert_episode(episode):
-    cartesian_positions = []
-    gripper_positions = []
-    joint_positions = []
-    
-    agentview_images = []
-    
-    actions = []
-    dones = []
 
-    language_instruction = []
+    T = len(episode["steps"])
+
+    joint_positions = np.empty((T, 7), dtype=np.float32)
+    cartesian_positions = np.empty((T, 6), dtype=np.float32)
+    gripper_positions = np.empty((T, 1), dtype=np.float32)
+    agentview_images = np.empty((T, CAMERA_HEIGHT, CAMERA_WIDTH, 3), dtype=np.uint8)
+    actions = np.empty((T, 7), dtype=np.float32)
+    dones = np.empty((T,), dtype=np.bool_)
+
+    steps = list(episode["steps"])
+    first_step = steps[0]
+
+    language_instruction = first_step["language_instruction"].numpy().decode("utf-8")
+    language_instruction_2 = first_step["language_instruction_2"].numpy().decode("utf-8")
+    language_instruction_3 = first_step["language_instruction_3"].numpy().decode("utf-8")
 
 
+    for i, step in enumerate(episode["steps"]):      
+        obs = step["observation"]
 
-    for step in episode["steps"]:      
-        language_instruction.append(step["language_instruction"])
-
-        # Extract observations
-        joint_position = step["observation"]["joint_position"].numpy().astype(np.float32)  
-        cartesian_position = step["observation"]["cartesian_position"].numpy().astype(np.float32)  
-        gripper_position = step["observation"]["gripper_position"].numpy().astype(np.float32) 
+        joint_positions[i] = obs["joint_position"].numpy().astype(np.float32)  
+        cartesian_positions[i] = obs["cartesian_position"].numpy().astype(np.float32)  
+        gripper_positions[i] = obs["gripper_position"].numpy().astype(np.float32) 
         
-        joint_positions.append(joint_position)
-        cartesian_positions.append(cartesian_position)  
-        gripper_positions.append(gripper_position)        
-
         # TODO resize the images?
-        img = step["observation"]["exterior_image_1_left"].numpy()
+        img = obs["exterior_image_1_left"].numpy()
         if img.dtype != np.uint8:
             img = (img * 255).astype(np.uint8)
+        # img = resize_with_padding(img)
+        agentview_images[i] = img
 
-        agentview_images.append(img)
-               
-        dones.append(step["is_terminal"].numpy())
-        actions.append(step["action"].numpy())
+        dones[i] = step["is_terminal"].numpy().astype(np.bool_)
+        actions[i] = step["action"].numpy()    
 
-    joint_velocity_max = np.array([3.1415]*6 + [1.0])
-    joint_velocity_min = -joint_velocity_max
-    actions_norm = 2 * (actions - joint_velocity_min) / (joint_velocity_max - joint_velocity_min) - 1
-
-    # Stack all arrays
     ep = {
         "obs": {
-            "joint_position": np.stack(joint_positions, axis=0).astype(np.float32),
-            "cartesian_position": np.stack(cartesian_positions, axis=0).astype(np.float32),
-            "gripper_position": np.stack(gripper_positions, axis=0).astype(np.float32),
-            "agentview_image": np.stack(agentview_images, axis=0).astype(np.uint8),
+            "joint_position": joint_positions,
+            "cartesian_position": cartesian_positions,
+            "gripper_position": gripper_positions,
+            "agentview_image": agentview_images,
         },
-        "language_instructions": np.stack(language_instruction, axis=0),
-        "actions": np.stack(actions_norm, axis=0).astype(np.float32),
-        "dones": np.stack(dones, axis=0).astype(np.bool_),
+        "language_instruction": language_instruction,
+        "language_instruction_2": language_instruction_2,
+        "language_instruction_3": language_instruction_3,
+        "actions": actions,
+        "dones": dones,
     }
-    
+
     return ep
 
 
 def write_episode(h5, idx, ep):
+
+    next_obs = {}
+    for k, v in ep["obs"].items():
+        next_v = np.concatenate([v[1:], v[-1:]], axis=0)
+        next_obs[k] = next_v
+
+    ep["next_obs"] = next_obs
+
     g = h5["data"].create_group(f"demo_{idx}")
     
     # Create obs group
     obs_group = g.create_group("obs")
+    next_obs_group = g.create_group("next_obs")
     
     # Write all observations
     for k, v in ep["obs"].items():
         obs_group.create_dataset(k, data=v, compression="gzip")
     
+    for k, v in ep["next_obs"].items():
+        next_obs_group.create_dataset(k, data=v, compression="gzip")
+
     g.create_dataset("actions", data=ep["actions"], compression="gzip")
-    g.create_dataset("language_instructions", data=ep["language_instructions"], compression="gzip") 
     g.create_dataset("dones", data=ep["dones"], compression="gzip")
 
     g.attrs["num_samples"] = ep["actions"].shape[0]
+    g.attrs["language_instruction"] = ep["language_instruction"]
+    g.attrs["language_instruction_2"] = ep["language_instruction_2"]
+    g.attrs["language_instruction_3"] = ep["language_instruction_3"]
 
+# --- not needed if the DataLoader handles the normalisation correctly ---
+
+def compute_action_stats(ds, num_episodes=None):
+    mins = []
+    maxs = []
+
+    for i, episode in enumerate(ds):
+        if num_episodes and i >= num_episodes:
+            break
+
+        acts = np.array([step["action"].numpy() for step in episode["steps"]])
+        mins.append(acts.min(axis=0))
+        maxs.append(acts.max(axis=0))
+
+    global_min = np.min(np.stack(mins), axis=0)
+    global_max = np.max(np.stack(maxs), axis=0)
+
+    return global_min, global_max
+
+def normalise(actions, a_min, a_max):
+    denom = (a_max - a_min)
+    denom[denom == 0] = 1.0
+    return 2 * (actions - a_min) / denom - 1
+
+# --- end of normalisation code ---
 
 def main(data_dir, output_path, num_episodes):
     print(f"...Loading dataset from {data_dir}")
@@ -201,7 +263,7 @@ def main(data_dir, output_path, num_episodes):
     with h5py.File(output_path, "w") as h5:
         h5.create_group("data")
         
-        h5["data"].attrs["env_args"] = np.string_(json.dumps(env_args))
+        h5["data"].attrs["env_args"] = json.dumps(env_args)
 
         ep_idx = 0
         episode_indices = []
@@ -218,7 +280,7 @@ def main(data_dir, output_path, num_episodes):
                 
                 episode_indices.append(ep_idx)
                 
-                print(f"...Wrote episode {ep_idx} with {len(robomimic_ep['actions'])} steps")
+                # print(f"...Wrote episode {ep_idx} with {len(robomimic_ep['actions'])} steps")
                 ep_idx += 1
                 
             except Exception as e:
@@ -235,9 +297,9 @@ def main(data_dir, output_path, num_episodes):
         np.random.shuffle(shuffled_indices)
         
         train_indices = sorted(shuffled_indices[:num_train])
-        valid_indices = sorted(shuffled_indices[num_train:])
+        val_indices = sorted(shuffled_indices[num_train:])
         train_demo_names = [f"demo_{i}" for i in train_indices]
-        valid_demo_names = [f"demo_{i}" for i in valid_indices]
+        val_demo_names = [f"demo_{i}" for i in val_indices]
         # Create mask group
         mask_group = h5.create_group("mask")
         mask_group.create_dataset(
@@ -247,7 +309,7 @@ def main(data_dir, output_path, num_episodes):
         )
         mask_group.create_dataset(
             "valid",
-            data=np.array(valid_demo_names, dtype="S"),
+            data=np.array(val_demo_names, dtype="S"),
             compression="gzip"
         )
 
@@ -256,7 +318,7 @@ def main(data_dir, output_path, num_episodes):
         print(f"\nConversion complete!")
         print(f"...Total episodes: {num_episodes_total}")
         print(f"...Train episodes: {len(train_indices)}")
-        print(f"...Valid episodes: {len(valid_indices)}")
+        print(f"...Validation episodes: {len(val_indices)}")
         print(f"...Output saved to: {output_path}")
 
 

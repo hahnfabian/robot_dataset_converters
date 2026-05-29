@@ -1,0 +1,637 @@
+/  (pear_25.hdf5)
+├── data/
+│   └── @action_max: [ 0.6948933   0.63506806  0.26231071 -1.37598109  0.30372819  2.64151287
+  0.48013163  1.        ]
+│   └── @action_min: [-0.3742913  -0.43080068 -0.46786413 -2.45590305 -0.28070313  1.44986129
+ -0.84522343  0.        ]
+│   └── @env_args: {"env_name": "pickup_pear_from_bowl", "type": 1, "env_kwargs": {"robots": ["Panda"], "has_renderer": false, "has_offscreen_renderer": true, "ignore_done": true, "use_object_obs": false, "use_camera_obs": true, "camera_names": ["agentview", "agentview_left", "agentview_right"], "camera_heights": [256, 256, 256], "camera_widths": [256, 256, 256], "camera_depths": [false, false, false], "control_freq": 20, "controller_configs": {"type": "JOINT_POSITION", "input_max": 1.0, "input_min": -1.0, "output_max": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], "output_min": [-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0], "kp": 150, "damping": 1, "impedance_mode": "fixed", "kp_limits": [0, 300], "damping_limits": [0, 10], "uncouple_pos_ori": true, "control_delta": false, "interpolation": null, "ramp_ratio": 0.0}, "render_gpu_device_id": 0}}
+│   └── @orientation_format: euler_xyz
+│   └── @source: RoboMind
+│   ├── demo_0/
+│   │   └── @num_samples: 128
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(128, 8) dtype=float32
+│   │   ├── actions  shape=(128, 8) dtype=float32
+│   │   ├── dones  shape=(128,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(128, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(128, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(128, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(128, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(128, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(128, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(128, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(128, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(128, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(128, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(128, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(128, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(128, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(128, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(128, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(128, 8) dtype=float32
+│   │   ├── rewards  shape=(128,) dtype=float32
+│   ├── demo_1/
+│   │   └── @num_samples: 117
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(117, 8) dtype=float32
+│   │   ├── actions  shape=(117, 8) dtype=float32
+│   │   ├── dones  shape=(117,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(117, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(117, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(117, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(117, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(117, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(117, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(117, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(117, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(117, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(117, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(117, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(117, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(117, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(117, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(117, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(117, 8) dtype=float32
+│   │   ├── rewards  shape=(117,) dtype=float32
+│   ├── demo_10/
+│   │   └── @num_samples: 199
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(199, 8) dtype=float32
+│   │   ├── actions  shape=(199, 8) dtype=float32
+│   │   ├── dones  shape=(199,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(199, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(199, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(199, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(199, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(199, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(199, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(199, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(199, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(199, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(199, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(199, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(199, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(199, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(199, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(199, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(199, 8) dtype=float32
+│   │   ├── rewards  shape=(199,) dtype=float32
+│   ├── demo_11/
+│   │   └── @num_samples: 103
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(103, 8) dtype=float32
+│   │   ├── actions  shape=(103, 8) dtype=float32
+│   │   ├── dones  shape=(103,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(103, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(103, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(103, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(103, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(103, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(103, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(103, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(103, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(103, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(103, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(103, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(103, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(103, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(103, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(103, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(103, 8) dtype=float32
+│   │   ├── rewards  shape=(103,) dtype=float32
+│   ├── demo_12/
+│   │   └── @num_samples: 128
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(128, 8) dtype=float32
+│   │   ├── actions  shape=(128, 8) dtype=float32
+│   │   ├── dones  shape=(128,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(128, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(128, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(128, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(128, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(128, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(128, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(128, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(128, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(128, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(128, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(128, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(128, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(128, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(128, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(128, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(128, 8) dtype=float32
+│   │   ├── rewards  shape=(128,) dtype=float32
+│   ├── demo_13/
+│   │   └── @num_samples: 72
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(72, 8) dtype=float32
+│   │   ├── actions  shape=(72, 8) dtype=float32
+│   │   ├── dones  shape=(72,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(72, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(72, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(72, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(72, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(72, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(72, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(72, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(72, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(72, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(72, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(72, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(72, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(72, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(72, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(72, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(72, 8) dtype=float32
+│   │   ├── rewards  shape=(72,) dtype=float32
+│   ├── demo_14/
+│   │   └── @num_samples: 180
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(180, 8) dtype=float32
+│   │   ├── actions  shape=(180, 8) dtype=float32
+│   │   ├── dones  shape=(180,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(180, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(180, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(180, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(180, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(180, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(180, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(180, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(180, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(180, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(180, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(180, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(180, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(180, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(180, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(180, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(180, 8) dtype=float32
+│   │   ├── rewards  shape=(180,) dtype=float32
+│   ├── demo_15/
+│   │   └── @num_samples: 157
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(157, 8) dtype=float32
+│   │   ├── actions  shape=(157, 8) dtype=float32
+│   │   ├── dones  shape=(157,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(157, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(157, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(157, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(157, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(157, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(157, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(157, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(157, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(157, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(157, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(157, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(157, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(157, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(157, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(157, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(157, 8) dtype=float32
+│   │   ├── rewards  shape=(157,) dtype=float32
+│   ├── demo_16/
+│   │   └── @num_samples: 122
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(122, 8) dtype=float32
+│   │   ├── actions  shape=(122, 8) dtype=float32
+│   │   ├── dones  shape=(122,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(122, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(122, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(122, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(122, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(122, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(122, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(122, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(122, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(122, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(122, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(122, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(122, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(122, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(122, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(122, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(122, 8) dtype=float32
+│   │   ├── rewards  shape=(122,) dtype=float32
+│   ├── demo_17/
+│   │   └── @num_samples: 118
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(118, 8) dtype=float32
+│   │   ├── actions  shape=(118, 8) dtype=float32
+│   │   ├── dones  shape=(118,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(118, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(118, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(118, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(118, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(118, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(118, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(118, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(118, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(118, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(118, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(118, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(118, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(118, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(118, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(118, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(118, 8) dtype=float32
+│   │   ├── rewards  shape=(118,) dtype=float32
+│   ├── demo_18/
+│   │   └── @num_samples: 143
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(143, 8) dtype=float32
+│   │   ├── actions  shape=(143, 8) dtype=float32
+│   │   ├── dones  shape=(143,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(143, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(143, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(143, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(143, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(143, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(143, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(143, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(143, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(143, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(143, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(143, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(143, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(143, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(143, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(143, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(143, 8) dtype=float32
+│   │   ├── rewards  shape=(143,) dtype=float32
+│   ├── demo_19/
+│   │   └── @num_samples: 136
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(136, 8) dtype=float32
+│   │   ├── actions  shape=(136, 8) dtype=float32
+│   │   ├── dones  shape=(136,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(136, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(136, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(136, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(136, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(136, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(136, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(136, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(136, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(136, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(136, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(136, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(136, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(136, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(136, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(136, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(136, 8) dtype=float32
+│   │   ├── rewards  shape=(136,) dtype=float32
+│   ├── demo_2/
+│   │   └── @num_samples: 149
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(149, 8) dtype=float32
+│   │   ├── actions  shape=(149, 8) dtype=float32
+│   │   ├── dones  shape=(149,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(149, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(149, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(149, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(149, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(149, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(149, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(149, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(149, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(149, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(149, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(149, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(149, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(149, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(149, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(149, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(149, 8) dtype=float32
+│   │   ├── rewards  shape=(149,) dtype=float32
+│   ├── demo_20/
+│   │   └── @num_samples: 160
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(160, 8) dtype=float32
+│   │   ├── actions  shape=(160, 8) dtype=float32
+│   │   ├── dones  shape=(160,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(160, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(160, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(160, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(160, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(160, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(160, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(160, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(160, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(160, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(160, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(160, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(160, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(160, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(160, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(160, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(160, 8) dtype=float32
+│   │   ├── rewards  shape=(160,) dtype=float32
+│   ├── demo_21/
+│   │   └── @num_samples: 144
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(144, 8) dtype=float32
+│   │   ├── actions  shape=(144, 8) dtype=float32
+│   │   ├── dones  shape=(144,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(144, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(144, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(144, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(144, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(144, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(144, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(144, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(144, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(144, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(144, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(144, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(144, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(144, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(144, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(144, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(144, 8) dtype=float32
+│   │   ├── rewards  shape=(144,) dtype=float32
+│   ├── demo_22/
+│   │   └── @num_samples: 139
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(139, 8) dtype=float32
+│   │   ├── actions  shape=(139, 8) dtype=float32
+│   │   ├── dones  shape=(139,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(139, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(139, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(139, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(139, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(139, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(139, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(139, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(139, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(139, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(139, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(139, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(139, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(139, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(139, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(139, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(139, 8) dtype=float32
+│   │   ├── rewards  shape=(139,) dtype=float32
+│   ├── demo_23/
+│   │   └── @num_samples: 112
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(112, 8) dtype=float32
+│   │   ├── actions  shape=(112, 8) dtype=float32
+│   │   ├── dones  shape=(112,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(112, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(112, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(112, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(112, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(112, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(112, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(112, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(112, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(112, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(112, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(112, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(112, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(112, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(112, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(112, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(112, 8) dtype=float32
+│   │   ├── rewards  shape=(112,) dtype=float32
+│   ├── demo_24/
+│   │   └── @num_samples: 135
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(135, 8) dtype=float32
+│   │   ├── actions  shape=(135, 8) dtype=float32
+│   │   ├── dones  shape=(135,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(135, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(135, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(135, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(135, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(135, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(135, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(135, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(135, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(135, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(135, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(135, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(135, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(135, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(135, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(135, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(135, 8) dtype=float32
+│   │   ├── rewards  shape=(135,) dtype=float32
+│   ├── demo_3/
+│   │   └── @num_samples: 163
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(163, 8) dtype=float32
+│   │   ├── actions  shape=(163, 8) dtype=float32
+│   │   ├── dones  shape=(163,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(163, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(163, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(163, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(163, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(163, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(163, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(163, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(163, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(163, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(163, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(163, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(163, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(163, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(163, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(163, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(163, 8) dtype=float32
+│   │   ├── rewards  shape=(163,) dtype=float32
+│   ├── demo_4/
+│   │   └── @num_samples: 118
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(118, 8) dtype=float32
+│   │   ├── actions  shape=(118, 8) dtype=float32
+│   │   ├── dones  shape=(118,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(118, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(118, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(118, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(118, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(118, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(118, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(118, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(118, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(118, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(118, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(118, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(118, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(118, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(118, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(118, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(118, 8) dtype=float32
+│   │   ├── rewards  shape=(118,) dtype=float32
+│   ├── demo_5/
+│   │   └── @num_samples: 97
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(97, 8) dtype=float32
+│   │   ├── actions  shape=(97, 8) dtype=float32
+│   │   ├── dones  shape=(97,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(97, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(97, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(97, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(97, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(97, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(97, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(97, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(97, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(97, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(97, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(97, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(97, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(97, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(97, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(97, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(97, 8) dtype=float32
+│   │   ├── rewards  shape=(97,) dtype=float32
+│   ├── demo_6/
+│   │   └── @num_samples: 222
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(222, 8) dtype=float32
+│   │   ├── actions  shape=(222, 8) dtype=float32
+│   │   ├── dones  shape=(222,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(222, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(222, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(222, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(222, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(222, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(222, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(222, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(222, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(222, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(222, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(222, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(222, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(222, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(222, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(222, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(222, 8) dtype=float32
+│   │   ├── rewards  shape=(222,) dtype=float32
+│   ├── demo_7/
+│   │   └── @num_samples: 115
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(115, 8) dtype=float32
+│   │   ├── actions  shape=(115, 8) dtype=float32
+│   │   ├── dones  shape=(115,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(115, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(115, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(115, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(115, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(115, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(115, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(115, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(115, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(115, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(115, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(115, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(115, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(115, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(115, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(115, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(115, 8) dtype=float32
+│   │   ├── rewards  shape=(115,) dtype=float32
+│   ├── demo_8/
+│   │   └── @num_samples: 168
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(168, 8) dtype=float32
+│   │   ├── actions  shape=(168, 8) dtype=float32
+│   │   ├── dones  shape=(168,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(168, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(168, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(168, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(168, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(168, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(168, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(168, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(168, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(168, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(168, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(168, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(168, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(168, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(168, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(168, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(168, 8) dtype=float32
+│   │   ├── rewards  shape=(168,) dtype=float32
+│   ├── demo_9/
+│   │   └── @num_samples: 128
+│   │   └── @task_instruction: Pick up a pear from the bowl
+│   │   ├── absolute_actions  shape=(128, 8) dtype=float32
+│   │   ├── actions  shape=(128, 8) dtype=float32
+│   │   ├── dones  shape=(128,) dtype=bool
+│   │   ├── next_obs/
+│   │   │   ├── agentview_image  shape=(128, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(128, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(128, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(128, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(128, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(128, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(128, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(128, 8) dtype=float32
+│   │   ├── obs/
+│   │   │   ├── agentview_image  shape=(128, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_left_image  shape=(128, 256, 256, 3) dtype=uint8
+│   │   │   ├── agentview_right_image  shape=(128, 256, 256, 3) dtype=uint8
+│   │   │   ├── robot0_eef_pos  shape=(128, 3) dtype=float32
+│   │   │   ├── robot0_eef_quat  shape=(128, 4) dtype=float32
+│   │   │   ├── robot0_eef_rot  shape=(128, 9) dtype=float32
+│   │   │   ├── robot0_gripper_qpos  shape=(128, 2) dtype=float32
+│   │   │   ├── robot0_joint_pos  shape=(128, 8) dtype=float32
+│   │   ├── rewards  shape=(128,) dtype=float32
+├── mask/
+│   ├── train  shape=(20,) dtype=|S7
+│   ├── valid  shape=(5,) dtype=|S7

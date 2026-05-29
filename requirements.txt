@@ -1,4 +1,7 @@
-h5py
-argparse
+tensorflow
 tensorflow_datasets 
 numpy 
+gcsfs
+argparse
+h5py
+opencv-python

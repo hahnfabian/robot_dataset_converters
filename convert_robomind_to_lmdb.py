@@ -1,5 +1,3 @@
-# TODO also process val data
-
 """
 Convert raw RoboMind (https://huggingface.co/datasets/x-humanoid-robomind/RoboMIND) hdf5 episodes into Seeker's LMDB cache format.
 
@@ -572,9 +570,6 @@ def main() -> None:
                     raise RuntimeError(f"No episodes found in input HDF5: {input_path}")
                 
 
-                task_embeddings = instruction_to_task_embedding(task_instructions).cpu().numpy().astype(np.float32)
-                robot_ids = np.full((len(episode_lengths),), robot_id, dtype=np.int64)
-
                 for _, group in episodes:
 
                     orientation_format = infer_orientation_format(group, args.orientation_format)
@@ -618,9 +613,17 @@ def main() -> None:
                         global_step += 1
 
         txn.put(b"__len__", str(global_step).encode("ascii"))
-        txn.comit()
+        txn.commit()
         env.sync()
         env.close()
+
+        if not task_instructions:
+            raise RuntimeError("No task instructions were collected from input episodes.")
+
+        task_embeddings = (
+            instruction_to_task_embedding(task_instructions).cpu().numpy().astype(np.float32)
+        )
+        robot_ids = np.full((len(episode_lengths),), robot_id, dtype=np.int64)
         
     except Exception as e:
         print(f"Error during processing: {e}")
